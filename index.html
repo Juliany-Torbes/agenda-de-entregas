@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de entregas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="topo">
+        <h1>Agenda de entregas</h1>
+        <p>Provas, trabalhos e apresentações em um só lugar.</p>
+    </header>
+
+    <main class="painel">
+
+        
+        <section class="cartao cartao-resumo">
+            <h2>Resumo</h2>
+            <div class="indicadores">
+                <div class="indicador">
+                    <span class="rotulo">Pendentes</span>
+                    <strong id="total-pendentes">0</strong>
+                </div>
+                <div class="indicador">
+                    <span class="rotulo">Próxima entrega</span>
+                    <strong id="proxima-entrega">—</strong>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="cartao cartao-nova">
+            <h2>Nova entrega</h2>
+            <form id="formulario" novalidate>
+                <label for="materia">Matéria</label>
+                <input type="text" id="materia" name="materia" placeholder="Ex.: Matemática">
+
+                <label for="tipo">Tipo</label>
+                <select id="tipo" name="tipo">
+                    <option value="" disabled selected>Escolha o tipo</option>
+                    <option value="prova">Prova</option>
+                    <option value="trabalho">Trabalho</option>
+                    <option value="apresentacao">Apresentação</option>
+                </select>
+
+                <label for="data">Data</label>
+                <input type="date" id="data" name="data">
+
+                <p id="erro" class="erro" role="alert"></p>
+
+                <button type="submit" class="botao-adicionar">Adicionar</button>
+            </form>
+        </section>
+
+        
+        <section class="cartao cartao-entrega">
+            <h2>Próximas entregas</h2>
+
+            <label for="filtro">Mostrar</label>
+            <select id="filtro">
+                <option value="tudo">Tudo</option>
+                <option value="pendentes">Pendentes</option>
+                <option value="feitas">Feitas</option>
+                <option value="prova">Provas</option>
+                <option value="trabalho">Trabalhos</option>
+                <option value="apresentacao">Apresentações</option>
+            </select>
+
+            <ul id="lista-entregas"></ul>
+            <p id="mensagem-vazia" class="vazio" hidden>Nenhuma entrega por aqui. Adicione uma ao lado.</p>
+        </section>
+
+    </main>
+
+    <footer class="rodape">
+        <p>Feito por Jully</p>
+    </footer>
+
+</body>
+</html>

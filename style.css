@@ -1,0 +1,286 @@
+/* ---------- Variáveis (cores num lugar só) ---------- */
+:root {
+    --rosa: #ee3089;
+    --rosa-escuro: #c70a73;
+    --rosa-hover: #a8085f;
+    --fundo: #ffd2f0;
+    --card: #ffffff;
+    --superficie: #fdf2f6;
+    --borda: #e6c3d6;
+    --texto: #302428;
+    --texto-suave: #6b5560;
+
+    --prova: #c0143c;
+    --trabalho: #1f6fb5;
+    --apresentacao: #7b3fa0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--texto);
+    background-color: var(--fundo);
+}
+
+/* ---------- Cabeçalho e rodapé ---------- */
+.topo {
+    padding: 28px 20px;
+    text-align: center;
+    color: #ffffff;
+    background-color: var(--rosa);
+}
+
+.topo h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.topo p {
+    margin: 6px 0 0;
+    color: #ffe3f1;
+}
+
+.rodape {
+    padding: 24px 20px;
+    text-align: center;
+    color: var(--texto-suave);
+    font-size: 14px;
+}
+
+.rodape p {
+    margin: 0;
+}
+
+/* ---------- Layout principal (grid com áreas) ---------- */
+/* Celular: tudo em uma coluna */
+.painel {
+    display: grid;
+    gap: 16px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    grid-template-areas:
+        "resumo"
+        "nova"
+        "entrega";
+}
+
+/* Telas maiores: formulário à esquerda, lista à direita */
+@media (min-width: 800px) {
+    .painel {
+        grid-template-columns: 1fr 2fr;
+        align-items: start;
+        grid-template-areas:
+            "resumo entrega"
+            "nova   entrega";
+    }
+}
+
+.cartao-resumo  { grid-area: resumo; }
+.cartao-nova    { grid-area: nova; }
+.cartao-entrega { grid-area: entrega; }
+
+/* ---------- Cartões ---------- */
+.cartao {
+    padding: 4px 20px 20px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background-color: var(--card);
+}
+
+.cartao h2 {
+    font-size: 18px;
+    color: var(--rosa-escuro);
+}
+
+/* ---------- Resumo ---------- */
+.indicadores {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.indicador {
+    padding: 12px 14px;
+    border-radius: 6px;
+    background-color: var(--superficie);
+}
+
+.rotulo {
+    display: block;
+    font-size: 13px;
+    color: var(--texto-suave);
+}
+
+.indicador strong {
+    display: block;
+    margin-top: 2px;
+    font-size: 20px;
+    line-height: 1.25;
+    color: var(--rosa-escuro);
+}
+
+/* ---------- Formulário ---------- */
+label {
+    display: block;
+    margin: 14px 0 4px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--texto);
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+.erro {
+    min-height: 1.5em;
+    margin: 10px 0 0;
+    font-size: 14px;
+    color: var(--prova);
+}
+
+/* ---------- Botões ---------- */
+button {
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.botao-adicionar {
+    width: 100%;
+    margin-top: 6px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--rosa-escuro);
+}
+
+.botao-adicionar:hover {
+    background-color: var(--rosa-hover);
+}
+
+.botao-pequeno {
+    padding: 6px 12px;
+    color: var(--texto);
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+.botao-pequeno:hover {
+    background-color: var(--superficie);
+}
+
+:focus-visible {
+    outline: 3px solid var(--rosa);
+    outline-offset: 2px;
+}
+
+/* ---------- Lista de entregas ---------- */
+#lista-entregas {
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.entrega {
+    --cor-tipo: var(--rosa);
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+    padding: 12px 14px;
+    border: 1px solid var(--borda);
+    border-left: 6px solid var(--cor-tipo);
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+.tipo-prova        { --cor-tipo: var(--prova); }
+.tipo-trabalho     { --cor-tipo: var(--trabalho); }
+.tipo-apresentacao { --cor-tipo: var(--apresentacao); }
+
+.entrega-data {
+    min-width: 48px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--texto-suave);
+}
+
+.entrega-texto strong {
+    display: block;
+}
+
+.etiqueta {
+    display: inline-block;
+    margin-top: 2px;
+    margin-right: 4px;
+    padding: 1px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff;
+    border-radius: 999px;
+    background-color: var(--cor-tipo);
+}
+
+.etiqueta-atraso {
+    background-color: var(--texto);
+}
+
+.entrega-acoes {
+    display: flex;
+    gap: 6px;
+}
+
+/* Entrega concluída: riscada e esmaecida */
+.entrega.feita {
+    opacity: 0.55;
+}
+
+.entrega.feita strong {
+    text-decoration: line-through;
+}
+
+/* Entrega atrasada: data em destaque */
+.entrega.atrasada .entrega-data {
+    color: var(--prova);
+}
+
+.vazio {
+    margin: 16px 0 0;
+    padding: 16px;
+    text-align: center;
+    color: var(--texto-suave);
+    border-radius: 6px;
+    background-color: var(--superficie);
+}
+
+/* Celular pequeno: botões vão para baixo do texto */
+@media (max-width: 520px) {
+    .entrega {
+        grid-template-columns: auto 1fr;
+    }
+
+    .entrega-acoes {
+        grid-column: 1 / -1;
+    }
+}
